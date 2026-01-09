@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import LoginForm from '$lib/components/login-form.svelte';
+	import LoginForm from '$lib/components/login_form.svelte';
 	import { getAuthState} from '$lib/firebase/auth.svelte';
 
 	$effect(() => {

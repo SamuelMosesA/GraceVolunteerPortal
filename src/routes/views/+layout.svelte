@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Import the navbar component
-	import ResponsiveNavbar from '$lib/components/ResponsiveNavbar.svelte';
+	import ResponsiveNavbar from '$lib/components/responsive_navbar.svelte';
 	import { getAuthState, setLoggedInUser } from '$lib/firebase/auth.svelte.js';
 
 	let { data, children } = $props();
