@@ -20,11 +20,7 @@
 		signOut(firebaseAuth);
 	}
 
-	const navBarLinks: NavBarLinks[] = [
-		{ url: '/views/home', displayLabel: 'Home' },
-		{ url: '/views/fullroster', displayLabel: 'Full-Roster' },
-		{ url: '/views/admintools', displayLabel: 'Admin-Tools' }
-	];
+	const navBarLinks: NavBarLinks[] = [{ url: '/views/home', displayLabel: 'Home' }];
 </script>
 
 <!-- The 'nav' element is the main container for the navbar. -->
@@ -69,11 +65,12 @@
 				</li>
 			{/each}
 			<li>
-				<a
-					href="#"
+				<button
 					onclick={logout}
-					class="hover:text-primary font-bold transition-colors duration-200">Logout</a
+					class="hover:text-primary font-bold transition-colors duration-200"
 				>
+					Logout
+				</button>
 			</li>
 		</ul>
 	</div>
@@ -95,9 +92,9 @@
 				</li>
 			{/each}
 			<li>
-				<a href="#" onclick={logout} class="block w-full text-right font-bold hover:text-gray-300"
-					>Logout</a
-				>
+				<button onclick={logout} class="block w-full text-right font-bold hover:text-gray-300">
+					Logout
+				</button>
 			</li>
 		</ul>
 	</div>

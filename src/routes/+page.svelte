@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import LoginForm from '$lib/components/login_form.svelte';
+	import FirebaseUI from '$lib/components/firebase_ui.svelte';
 	import { getAuthState} from '$lib/firebase/auth.svelte';
 
 	$effect(() => {
@@ -10,5 +10,5 @@
 </script>
 
 <div class="flex h-screen w-full items-center justify-center px-4">
-	<LoginForm />
+	<FirebaseUI />
 </div>

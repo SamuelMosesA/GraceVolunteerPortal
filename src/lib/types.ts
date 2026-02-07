@@ -5,11 +5,23 @@ export interface NavBarLinks {
     displayLabel: string
 }
 
-export interface OnAuthStateChangedResult{
+export interface OnAuthStateChangedResult {
     user: User | null,
     unsubscrbeAuthUpdates: Unsubscribe
 }
 
-export interface AuthState{
+export interface AuthState {
     user: User | null
+}
+
+export interface Shift {
+    date: string;
+    role: string;
+    team: string;
+}
+
+export interface UserSchedule {
+    email: string;
+    lastUpdated: any; // Firestore Timestamp
+    shifts: Shift[];
 }

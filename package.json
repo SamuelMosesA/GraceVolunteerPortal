@@ -59,6 +59,7 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
-		"firebase": "^11.9.0"
+		"firebase": "^11.9.0",
+		"firebaseui": "^6.1.0"
 	}
 }
