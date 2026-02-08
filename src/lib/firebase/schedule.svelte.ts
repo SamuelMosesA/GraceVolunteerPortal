@@ -23,11 +23,14 @@ export function getNearestShift(shifts: Shift[]): Shift | null {
     if (!shifts || shifts.length === 0) return null;
 
     const now = new Date();
-    // Normalize now to start of day for comparison if needed, 
-    // but the instruction says "earliest >= current date"
+    now.setHours(0, 0, 0, 0); // Normalize to start of day
 
     const upcomingShifts = shifts
-        .filter((shift) => new Date(shift.date) >= now)
+        .filter((shift) => {
+            const shiftDate = new Date(shift.date);
+            shiftDate.setHours(0, 0, 0, 0); // Normalize shift date too just in case
+            return shiftDate >= now;
+        })
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     return upcomingShifts.length > 0 ? upcomingShifts[0] : null;

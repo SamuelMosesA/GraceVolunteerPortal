@@ -51,20 +51,31 @@
 			<Table.Header class="bg-muted">
 				<Table.Row>
 					<Table.Head class="w-1/3">Date</Table.Head>
-					<Table.Head>Role</Table.Head>
 					<Table.Head>Team</Table.Head>
+					<Table.Head>Role</Table.Head>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				{#if schedule && schedule.shifts.length > 0}
-					{#each schedule.shifts as shift}
-						<Table.Row>
-							<Table.Cell class="font-medium">{shift.date}</Table.Cell>
-							<Table.Cell>{shift.role}</Table.Cell>
-							<Table.Cell>{shift.team}</Table.Cell>
-						</Table.Row>
-					{/each}
-				{:else if !isLoading}
+				{#each schedule?.shifts.filter((s) => {
+					const shiftDate = new Date(s.date);
+					shiftDate.setHours(0, 0, 0, 0);
+					const now = new Date();
+					now.setHours(0, 0, 0, 0);
+					return shiftDate >= now;
+				}) || [] as shift}
+					<Table.Row>
+						<Table.Cell class="font-medium">{shift.date}</Table.Cell>
+						<Table.Cell>{shift.team}</Table.Cell>
+						<Table.Cell>{shift.role}</Table.Cell>
+					</Table.Row>
+				{/each}
+				{#if !isLoading && (!schedule || schedule.shifts.filter((s) => {
+							const shiftDate = new Date(s.date);
+							shiftDate.setHours(0, 0, 0, 0);
+							const now = new Date();
+							now.setHours(0, 0, 0, 0);
+							return shiftDate >= now;
+						}).length === 0)}
 					<Table.Row>
 						<Table.Cell colspan={3} class="text-center">No shifts found.</Table.Cell>
 					</Table.Row>
