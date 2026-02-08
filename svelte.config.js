@@ -9,7 +9,9 @@ const config = {
 	preprocess: [vitePreprocess(), mdsvex()],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			fallback: 'index.html' // Use index.html as fallback for SPA routing
+		})
 	},
 
 	extensions: ['.svelte', '.svx']
