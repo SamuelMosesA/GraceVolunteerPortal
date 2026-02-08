@@ -27,24 +27,24 @@
 </script>
 
 <div class="mx-auto max-w-4xl md:p-4">
-	<h1 class="text-primary my-6 px-4 text-3xl font-bold md:px-0">Role Instructions</h1>
+	<h1 class="text-primary my-6 px-2 text-3xl font-bold md:px-0">Role Instructions</h1>
 
 	{#if isLoading}
-		<p class="px-4">Loading instructions...</p>
+		<p class="px-2">Loading instructions...</p>
 	{:else if instructions.length === 0}
-		<p class="text-muted-foreground px-4">No instructions found.</p>
+		<p class="text-muted-foreground px-2">No instructions found.</p>
 	{:else}
 		<Accordion.Root type="single" class="w-full space-y-4">
 			{#each sortedInstructions as instruction}
 				<Card.Root class="md:rounded-lg md:border-x">
 					<Accordion.Item value="{instruction.team}-{instruction.role}" class="border-b-0">
-						<Accordion.Trigger class="px-4 py-3 hover:no-underline md:px-6 md:py-4">
+						<Accordion.Trigger class="px-2 py-3 hover:no-underline md:px-6 md:py-4">
 							<span class="text-lg font-semibold text-yellow-500"
 								>{instruction.team}
 								<span class="text-muted-foreground font-normal">({instruction.role})</span></span
 							>
 						</Accordion.Trigger>
-						<Accordion.Content class="px-4 pb-3 md:px-6 md:pb-4">
+						<Accordion.Content class="px-2 pb-3 md:px-6 md:pb-4">
 							<div class="prose dark:prose-invert max-w-none">
 								{@html marked(instruction.instructions_md || '')}
 							</div>
