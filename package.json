@@ -61,7 +61,7 @@
 	"dependencies": {
 		"@tailwindcss/typography": "^0.5.19",
 		"@types/marked": "^5.0.2",
-		"firebase": "^11.9.0",
+		"firebase": "^10.14.1",
 		"firebaseui": "^6.1.0",
 		"marked": "^17.0.1"
 	}
