@@ -34,9 +34,6 @@
 		<Card.Root>
 			<Card.Header>
 				<Card.Title><span class="text-2xl font-bold">{nearestShift.date}</span></Card.Title>
-				<Card.Action>
-					<Button variant="default">Acknowledge</Button>
-				</Card.Action>
 			</Card.Header>
 			<Card.Content>
 				<p class="font-bold">{nearestShift.role} - {nearestShift.team}</p>

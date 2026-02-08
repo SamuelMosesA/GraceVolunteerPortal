@@ -25,3 +25,9 @@ export interface UserSchedule {
     lastUpdated: any; // Firestore Timestamp
     shifts: Shift[];
 }
+
+export interface RoleInstruction {
+    role: string;
+    team: string; // Ensure this matches what is in Firestore (case-sensitive)
+    instructions_md: string;
+}

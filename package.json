@@ -22,8 +22,8 @@
 		"@chromatic-com/storybook": "^4",
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
-		"@internationalized/date": "^3.8.2",
-		"@lucide/svelte": "^0.511.0",
+		"@internationalized/date": "^3.11.0",
+		"@lucide/svelte": "^0.561.0",
 		"@playwright/test": "^1.49.1",
 		"@storybook/addon-a11y": "^9.0.5",
 		"@storybook/addon-docs": "^9.0.5",
@@ -35,7 +35,7 @@
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"@tailwindcss/vite": "^4.0.0",
 		"@tanstack/table-core": "^8.21.3",
-		"bits-ui": "^2.4.1",
+		"bits-ui": "^2.15.5",
 		"clsx": "^2.1.1",
 		"eslint": "^9.18.0",
 		"eslint-config-prettier": "^10.0.1",
@@ -59,7 +59,10 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
+		"@tailwindcss/typography": "^0.5.19",
+		"@types/marked": "^5.0.2",
 		"firebase": "^11.9.0",
-		"firebaseui": "^6.1.0"
+		"firebaseui": "^6.1.0",
+		"marked": "^17.0.1"
 	}
 }

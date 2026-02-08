@@ -20,7 +20,10 @@
 		signOut(firebaseAuth);
 	}
 
-	const navBarLinks: NavBarLinks[] = [{ url: '/views/home', displayLabel: 'Home' }];
+	const navBarLinks: NavBarLinks[] = [
+		{ url: '/views/home', displayLabel: 'Home' },
+		{ url: '/views/instructions', displayLabel: 'Instructions' }
+	];
 </script>
 
 <!-- The 'nav' element is the main container for the navbar. -->
