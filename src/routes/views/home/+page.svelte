@@ -46,15 +46,15 @@
 				<div class="flex items-center gap-6">
 					<!-- Left Section: Date and Time in a rounded pill -->
 					<div
-						class="bg-primary/10 text-primary flex min-w-[200px] flex-col justify-center rounded-3xl px-8 py-6 text-center"
+						class="bg-primary/10 text-primary flex min-w-[220px] flex-col justify-center rounded-3xl px-10 py-8 text-center"
 					>
-						<span class="text-2xl font-black tracking-tight uppercase">
+						<span class="text-5xl font-black tracking-tighter uppercase">
 							{formatDate(nearestShift.date).split(' ')[0]}
 						</span>
-						<span class="text-2xl font-bold opacity-80">
-							{formatDate(nearestShift.date).split(' ').slice(1).join(' ')}
+						<span class="text-xl font-bold tracking-widest uppercase opacity-80">
+							{formatDate(nearestShift.date).split(' ').slice(1, 2).join(' ')}
 						</span>
-						<span class="mt-2 text-xl font-medium">
+						<span class="mt-4 text-xl font-medium opacity-70">
 							{scheduleTimes[nearestShift.team] || '--:--'}
 						</span>
 					</div>
