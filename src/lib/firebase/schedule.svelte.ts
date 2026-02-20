@@ -24,11 +24,13 @@ export function getUpcomingShifts(shifts: Shift[]): Shift[] {
     const now = new Date();
     now.setHours(0, 0, 0, 0);
 
-    return shifts.filter((shift) => {
-        const shiftDate = new Date(shift.date);
-        shiftDate.setHours(0, 0, 0, 0);
-        return shiftDate >= now;
-    });
+    return shifts
+        .filter((shift) => {
+            const shiftDate = new Date(shift.date);
+            shiftDate.setHours(0, 0, 0, 0);
+            return shiftDate >= now;
+        })
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }
 
 import Papa from 'papaparse';
