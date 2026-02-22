@@ -14,10 +14,15 @@ export interface AuthState {
     user: User | null
 }
 
+export type RoleName = string;
+export type VolunteerName = string;
+export type Roster = Record<RoleName, VolunteerName[]>;
+
 export interface Shift {
     date: string;
     role: string;
     team: string;
+    roster?: Roster;
 }
 
 export interface UserSchedule {
