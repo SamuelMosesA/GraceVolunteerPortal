@@ -77,7 +77,7 @@
 								</div>
 
 								<!-- Right Section: Role and Team -->
-								<div class="flex flex-1 flex-col justify-center text-center md:text-left">
+								<div class="flex flex-1 flex-col justify-center text-center md:text-left md:min-w-[220px]">
 									<p class="text-foreground text-3xl font-extrabold tracking-tight md:text-4xl">
 										{nearestShift.role}
 									</p>
