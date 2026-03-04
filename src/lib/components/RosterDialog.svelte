@@ -4,8 +4,10 @@
 	import { X } from '@lucide/svelte';
 	import { fade, scale } from 'svelte/transition';
 
-	let { isOpen = $bindable(false), roster = null }: { isOpen: boolean; roster: Roster | null } =
-		$props();
+	let {
+		isOpen = $bindable(false),
+		teamShiftDetails = null
+	}: { isOpen: boolean; teamShiftDetails: Roster | null } = $props();
 
 	function close() {
 		isOpen = false;
@@ -40,10 +42,10 @@
 			</Button>
 		</div>
 
-		{#if roster && Object.keys(roster).length > 0}
+		{#if teamShiftDetails && Object.keys(teamShiftDetails).length > 0}
 			<div class="max-h-[60vh] overflow-y-auto pr-2">
 				<div class="space-y-6">
-					{#each Object.entries(roster) as [role, volunteers]}
+					{#each Object.entries(teamShiftDetails) as [role, volunteers]}
 						<div>
 							<h3 class="text-primary mb-2 text-sm font-bold tracking-widest uppercase opacity-70">
 								{role}

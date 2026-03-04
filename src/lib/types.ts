@@ -22,13 +22,18 @@ export interface Shift {
     date: string;
     role: string;
     team: string;
-    roster?: Roster;
+    teamShiftDetails?: Roster;
+}
+
+export interface Volunteer {
+    name: string;
+    shifts: Shift[];
 }
 
 export interface UserSchedule {
     email: string;
     lastUpdated: any; // Firestore Timestamp
-    shifts: Shift[];
+    volunteers: Volunteer[];
 }
 
 export interface RoleInstruction {
