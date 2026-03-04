@@ -84,7 +84,7 @@
 		class:max-h-0={!isOpen}
 		class:max-h-screen={isOpen}
 	>
-		<ul class="flex w-full flex-col items-stretch space-y-8 py-4 pr-4">
+		<ul class="flex w-full flex-col items-stretch space-y-8 py-4 pr-4 mt-8">
 			{#each navBarLinks as link}
 				<li>
 					<a
