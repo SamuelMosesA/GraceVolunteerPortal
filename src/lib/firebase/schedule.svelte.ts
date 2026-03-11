@@ -1,5 +1,5 @@
 import { fireStore } from './connection';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import type { UserSchedule, Shift } from '../types';
 
 export async function getUserSchedule(email: string): Promise<UserSchedule | null> {
@@ -33,7 +33,7 @@ export function getUpcomingShifts(shifts: Shift[]): Shift[] {
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }
 
-import Papa from 'papaparse';
+
 
 export function getNearestShift(shifts: Shift[]): Shift | null {
     const upcomingShifts = getUpcomingShifts(shifts);
@@ -44,28 +44,23 @@ export function getNearestShift(shifts: Shift[]): Shift | null {
 
 export async function getScheduleTimes(): Promise<Record<string, string>> {
     try {
-        const response = await fetch('/schedule_times/schedule_time.csv');
-        if (!response.ok) throw new Error('Failed to fetch times');
-
-        const csvText = await response.text();
-        const results = Papa.parse(csvText, {
-            header: true,
-            skipEmptyLines: true,
-            transformHeader: (header: string) => header.trim()
-        });
-
+        const querySnapshot = await getDocs(collection(fireStore, 'team_timings'));
         const timesMap: Record<string, string> = {};
-        (results.data as any[]).forEach(row => {
-            const team = row['Team']?.trim();
-            const time = row['Time']?.trim();
-            if (team && time) {
-                timesMap[team] = time;
+
+        console.log('Fetching timings from Firestore collection: team_timings');
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const team = doc.id;
+            const startTime = data.start;
+
+            if (team && startTime) {
+                timesMap[team] = startTime;
             }
         });
 
         return timesMap;
     } catch (error) {
-        console.error('Error fetching schedule times:', error);
+        console.error('Error fetching schedule times from Firestore:', error);
         return {};
     }
 }
