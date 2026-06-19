@@ -11,7 +11,8 @@ export interface OnAuthStateChangedResult {
 }
 
 export interface AuthState {
-    user: User | null
+    user: User | null;
+    initialized: boolean;
 }
 
 export type RoleName = string;
@@ -40,4 +41,5 @@ export interface RoleInstruction {
     role: string;
     team: string; // Ensure this matches what is in Firestore (case-sensitive)
     instructions_md: string;
+    filename: string;
 }

@@ -8,7 +8,7 @@
 	import '../app.css';
 	import { goto } from '$app/navigation';
 
-	let authState = $state<AuthState>({ user: null });
+	let authState = $state<AuthState>({ user: null, initialized: false });
 	setAuthState(authState)
 
 	onMount(() => {
@@ -16,7 +16,7 @@
 	});
 
 	$effect(() => {
-		if (authState.user===null) {
+		if (authState.initialized && authState.user === null) {
 			goto('/');
 		}
 	});
