@@ -43,8 +43,6 @@
 </script>
 
 <div class="max-w-lg justify-self-center md:min-w-lg">
-
-
 	{#if isLoading}
 		<p class="mt-8">Loading schedule...</p>
 	{:else if schedule && schedule.volunteers && schedule.volunteers.length > 0}
@@ -53,7 +51,9 @@
 			{@const nearestShift = getNearestShift(volunteer.shifts)}
 
 			<div class="mt-12">
-				<h2 class="text-3xl font-bold"><span class="text-primary text-5xl">{volunteer.name}</span>'s Schedule</h2>
+				<h2 class="text-3xl font-bold">
+					<span class="text-primary text-5xl">{volunteer.name}</span>'s Schedule
+				</h2>
 				<Separator class="bg-border my-4" />
 
 				<h3 class="text-primary my-4 text-xl font-semibold">Next Scheduled</h3>
@@ -77,7 +77,9 @@
 								</div>
 
 								<!-- Right Section: Role and Team -->
-								<div class="flex flex-1 flex-col justify-center text-center md:text-left md:min-w-[220px]">
+								<div
+									class="flex flex-1 flex-col justify-center text-center md:min-w-[220px] md:text-left"
+								>
 									<p class="text-foreground text-3xl font-extrabold tracking-tight md:text-4xl">
 										{nearestShift.role}
 									</p>
