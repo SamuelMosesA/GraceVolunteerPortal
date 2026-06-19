@@ -2,21 +2,20 @@
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
-	import { getLoggedInUser } from '$lib/firebase/auth.svelte';
+	import { getAuthState } from '$lib/firebase/auth.svelte';
 	import {
 		getUserSchedule,
 		getNearestShift,
 		getUpcomingShifts,
 		getScheduleTimes
 	} from '$lib/firebase/schedule.svelte';
-	import { onMount } from 'svelte';
 	import { formatDate } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import RosterDialog from '$lib/components/RosterDialog.svelte';
 	import { Users } from '@lucide/svelte';
 	import type { UserSchedule, Roster } from '$lib/types';
 
-	let user = getLoggedInUser();
+	let authState = getAuthState();
 	let schedule = $state<UserSchedule | null>(null);
 	let scheduleTimes = $state<Record<string, string>>({});
 	let isLoading = $state(true);
@@ -31,20 +30,28 @@
 		}
 	}
 
-	onMount(async () => {
-		const [scheduleData, timesData] = await Promise.all([
-			user && user.email ? getUserSchedule(user.email) : Promise.resolve(null),
-			getScheduleTimes()
-		]);
-		schedule = scheduleData;
-		scheduleTimes = timesData;
-		isLoading = false;
+	$effect(() => {
+		if (authState.initialized && authState.user) {
+			const user = authState.user;
+			if (user.email) {
+				Promise.all([
+					getUserSchedule(user.email),
+					getScheduleTimes()
+				]).then(([scheduleData, timesData]) => {
+					schedule = scheduleData;
+					scheduleTimes = timesData;
+					isLoading = false;
+				});
+			} else {
+				isLoading = false;
+			}
+		} else if (authState.initialized && !authState.user) {
+			isLoading = false;
+		}
 	});
 </script>
 
 <div class="max-w-lg justify-self-center md:min-w-lg">
-
-
 	{#if isLoading}
 		<p class="mt-8">Loading schedule...</p>
 	{:else if schedule && schedule.volunteers && schedule.volunteers.length > 0}
@@ -53,7 +60,9 @@
 			{@const nearestShift = getNearestShift(volunteer.shifts)}
 
 			<div class="mt-12">
-				<h2 class="text-3xl font-bold"><span class="text-primary text-5xl">{volunteer.name}</span>'s Schedule</h2>
+				<h2 class="text-3xl font-bold">
+					<span class="text-primary text-5xl">{volunteer.name}</span>'s Schedule
+				</h2>
 				<Separator class="bg-border my-4" />
 
 				<h3 class="text-primary my-4 text-xl font-semibold">Next Scheduled</h3>
@@ -77,7 +86,9 @@
 								</div>
 
 								<!-- Right Section: Role and Team -->
-								<div class="flex flex-1 flex-col justify-center text-center md:text-left md:min-w-[220px]">
+								<div
+									class="flex flex-1 flex-col justify-center text-center md:min-w-[220px] md:text-left"
+								>
 									<p class="text-foreground text-3xl font-extrabold tracking-tight md:text-4xl">
 										{nearestShift.role}
 									</p>
