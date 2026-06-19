@@ -21,7 +21,8 @@ export async function getAllInstructions(): Promise<RoleInstruction[]> {
             return {
                 team,
                 role,
-                instructions_md: content as string
+                instructions_md: content as string,
+                filename
             };
         });
 
@@ -30,4 +31,9 @@ export async function getAllInstructions(): Promise<RoleInstruction[]> {
         console.error('Error loading static instructions:', error);
         return [];
     }
+}
+
+export async function getInstructionByFilename(filename: string): Promise<RoleInstruction | null> {
+    const instructions = await getAllInstructions();
+    return instructions.find((i) => i.filename.toLowerCase() === filename.toLowerCase()) || null;
 }

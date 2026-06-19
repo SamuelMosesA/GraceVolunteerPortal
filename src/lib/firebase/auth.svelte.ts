@@ -29,6 +29,7 @@ export function subscribeToAuthUpdates(authState: AuthState) {
 		}else{
 			authState.user = null;
 		}
+		authState.initialized = true;
 	});
 }
 
