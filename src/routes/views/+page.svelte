@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-    goto("/views/home")
+	import { goto } from '$app/navigation';
+	goto('/views/home');
 </script>
 
 <h1>Logged in</h1>

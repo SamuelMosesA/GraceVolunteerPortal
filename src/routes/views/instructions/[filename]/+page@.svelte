@@ -88,7 +88,7 @@
 			<Card.Content class="px-6 py-8">
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
-				<div class="prose dark:prose-invert max-w-none w-full" onclick={handleInstructionClick}>
+				<div class="prose dark:prose-invert w-full max-w-none" onclick={handleInstructionClick}>
 					{@html marked(instruction.instructions_md || '')}
 				</div>
 			</Card.Content>

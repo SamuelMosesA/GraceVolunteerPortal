@@ -26,7 +26,7 @@ export function subscribeToAuthUpdates(authState: AuthState) {
 		console.log('Auth Update', user);
 		if (user) {
 			authState.user = user;
-		}else{
+		} else {
 			authState.user = null;
 		}
 		authState.initialized = true;
@@ -34,7 +34,7 @@ export function subscribeToAuthUpdates(authState: AuthState) {
 }
 
 const authState = {};
-const loggedInUser = {}
+const loggedInUser = {};
 
 export function setAuthState(state: AuthState) {
 	setContext(authState, state);
@@ -44,10 +44,10 @@ export function getAuthState() {
 	return getContext(authState) as AuthState;
 }
 
-export function setLoggedInUser(user: User){
-	setContext(loggedInUser, user)
+export function setLoggedInUser(user: User) {
+	setContext(loggedInUser, user);
 }
 
-export function getLoggedInUser(){
-	return getContext(loggedInUser) as User
+export function getLoggedInUser() {
+	return getContext(loggedInUser) as User;
 }

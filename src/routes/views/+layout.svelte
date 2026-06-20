@@ -5,7 +5,7 @@
 
 	let { data, children } = $props();
 
-	let authState = getAuthState()
+	let authState = getAuthState();
 </script>
 
 {#if authState.user}
