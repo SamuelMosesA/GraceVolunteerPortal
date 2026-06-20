@@ -62,10 +62,14 @@
 					rel="noopener noreferrer"
 					class="group block transition-all"
 				>
-					<Card.Root class="border-border hover:border-yellow-500/50 hover:bg-muted/20 h-full border transition-all duration-300 shadow-sm hover:shadow-md">
+					<Card.Root
+						class="border-border hover:bg-muted/20 h-full border shadow-sm transition-all duration-300 hover:border-yellow-500/50 hover:shadow-md"
+					>
 						<Card.Content class="flex items-center justify-between p-6">
 							<div class="flex flex-col gap-1">
-								<span class="text-yellow-500 group-hover:text-yellow-400 text-lg font-bold transition-colors">
+								<span
+									class="text-lg font-bold text-yellow-500 transition-colors group-hover:text-yellow-400"
+								>
 									{instruction.team}
 								</span>
 								{#if instruction.role !== instruction.team}
@@ -75,7 +79,10 @@
 								{/if}
 							</div>
 							<div class="text-muted-foreground group-hover:text-primary transition-colors">
-								<ArrowUpRight size={20} class="transform transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+								<ArrowUpRight
+									size={20}
+									class="transform transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+								/>
 							</div>
 						</Card.Content>
 					</Card.Root>

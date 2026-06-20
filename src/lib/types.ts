@@ -1,18 +1,18 @@
-import type { Unsubscribe, User } from "firebase/auth";
+import type { Unsubscribe, User } from 'firebase/auth';
 
 export interface NavBarLinks {
-    url: string,
-    displayLabel: string
+	url: string;
+	displayLabel: string;
 }
 
 export interface OnAuthStateChangedResult {
-    user: User | null,
-    unsubscrbeAuthUpdates: Unsubscribe
+	user: User | null;
+	unsubscrbeAuthUpdates: Unsubscribe;
 }
 
 export interface AuthState {
-    user: User | null;
-    initialized: boolean;
+	user: User | null;
+	initialized: boolean;
 }
 
 export type RoleName = string;
@@ -20,26 +20,38 @@ export type VolunteerName = string;
 export type Roster = Record<RoleName, VolunteerName[]>;
 
 export interface Shift {
-    date: string;
-    role: string;
-    team: string;
-    teamShiftDetails?: Roster;
+	date: string;
+	role: string;
+	team: string;
+	teamShiftDetails?: Roster;
 }
 
 export interface Volunteer {
-    name: string;
-    shifts: Shift[];
+	name: string;
+	shifts: Shift[];
 }
 
 export interface UserSchedule {
-    email: string;
-    lastUpdated: any; // Firestore Timestamp
-    volunteers: Volunteer[];
+	email: string;
+	lastUpdated: any; // Firestore Timestamp
+	volunteers: Volunteer[];
 }
 
 export interface RoleInstruction {
-    role: string;
-    team: string; // Ensure this matches what is in Firestore (case-sensitive)
-    instructions_md: string;
-    filename: string;
+	role: string;
+	team: string; // Ensure this matches what is in Firestore (case-sensitive)
+	instructions_md: string;
+	filename: string;
+}
+
+export interface GlobalScheduleRow {
+	team: string;
+	role: string;
+	members: string[];
+}
+
+export interface GlobalScheduleCard {
+	date: string;
+	formattedDate: string;
+	rows: GlobalScheduleRow[];
 }

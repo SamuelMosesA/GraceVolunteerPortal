@@ -34,14 +34,13 @@
 		if (authState.initialized && authState.user) {
 			const user = authState.user;
 			if (user.email) {
-				Promise.all([
-					getUserSchedule(user.email),
-					getScheduleTimes()
-				]).then(([scheduleData, timesData]) => {
-					schedule = scheduleData;
-					scheduleTimes = timesData;
-					isLoading = false;
-				});
+				Promise.all([getUserSchedule(user.email), getScheduleTimes()]).then(
+					([scheduleData, timesData]) => {
+						schedule = scheduleData;
+						scheduleTimes = timesData;
+						isLoading = false;
+					}
+				);
 			} else {
 				isLoading = false;
 			}

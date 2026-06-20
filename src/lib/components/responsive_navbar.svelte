@@ -22,6 +22,7 @@
 
 	const navBarLinks: NavBarLinks[] = [
 		{ url: '/views/home', displayLabel: 'Home' },
+		{ url: '/views/global-view', displayLabel: 'Global View' },
 		{ url: '/views/instructions', displayLabel: 'Instructions' }
 	];
 </script>
@@ -84,7 +85,7 @@
 		class:max-h-0={!isOpen}
 		class:max-h-screen={isOpen}
 	>
-		<ul class="flex w-full flex-col items-stretch space-y-8 py-4 pr-4 mt-8">
+		<ul class="mt-8 flex w-full flex-col items-stretch space-y-8 py-4 pr-4">
 			{#each navBarLinks as link}
 				<li>
 					<a
