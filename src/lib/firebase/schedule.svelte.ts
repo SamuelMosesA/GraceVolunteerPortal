@@ -115,7 +115,7 @@ export async function getGlobalSchedule(): Promise<GlobalScheduleCard[]> {
 			});
 		}
 
-		cards.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+		cards.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
 		return cards;
 	} catch (error) {
